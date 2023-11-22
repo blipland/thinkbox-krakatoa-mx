@@ -11,7 +11,7 @@ import version_gen
 
 VALID_MAX_CONFIGS: dict[tuple[str, str], set[str]] = {
     ('Visual Studio', '15'): { '2022' },
-    ('Visual Studio', '16'): { '2023' },
+    ('Visual Studio', '16'): { '2023', '2024' }
 }
 
 SETTINGS: dict[str, Any] = {
@@ -37,7 +37,9 @@ REQUIRES: list[str] = [
     'magmamx/1.0.0',
     # 'nodeview/1.0.0',
     'krakatoamxsdk/1.0.0',
-    'openimageio/2.3.7.2'
+    'openimageio/2.3.7.2',
+	'zlib/1.2.12'
+	
 ]
 
 NO_LICENSE_ALLOWLIST: set[str] = {
@@ -75,7 +77,7 @@ class KrakatoaMXConan(ConanFile):
     tool_requires: list[str] = TOOL_REQUIRES
     generators: str | list[str] = 'cmake_find_package'
     options: dict[str, Any] = {
-        'max_version': ['2022', '2023']
+        'max_version': ['2022', '2023','2024']
     }
     default_options: dict[str, Any] = {
         'openimageio:with_libjpeg': 'libjpeg',
@@ -105,7 +107,7 @@ class KrakatoaMXConan(ConanFile):
 
     def configure(self) -> None:
         if self.options.max_version == None:
-            self.options.max_version = '2023'
+            self.options.max_version = '2022'
         self.options['maxsdk'].max_version = self.options.max_version
         self.options['thinkboxmxlibrary'].max_version = self.options.max_version
         self.options['magmamx'].max_version = self.options.max_version

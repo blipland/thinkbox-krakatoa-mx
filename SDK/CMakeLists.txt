@@ -8,7 +8,7 @@ find_package( thinkboxcmlibrary REQUIRED )
 include( PrecompiledHeader )
 include( ThinkboxCMLibrary )
 
-set( SUPPORTED_MAX_VERSIONS 2022 2023 )
+set( SUPPORTED_MAX_VERSIONS 2022 2023 2024)
 
 option( MAX_VERSION "The version of the 3ds Max SDK to build the library against." 2022 )
 
@@ -24,7 +24,7 @@ target_include_directories( krakatoamxsdk PUBLIC
 	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
 	$<INSTALL_INTERFACE:include>
 )
- 
+
 file( GLOB_RECURSE H_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
         "krakatoa/*.h"
         "krakatoa/*.hpp"

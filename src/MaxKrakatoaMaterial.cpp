@@ -921,6 +921,41 @@ class raytrace_reflection_functor {
                         return p;
                     }
                 }
+                // 2024 Ben Lipman 9/21/2023
+                Matrix3 MatrixTo( RefFrame ito ) {
+
+                    switch( ito ) {
+                    case REF_CAMERA:
+                        return Matrix3();
+                    case REF_OBJECT:
+                        return isct.inst->camToObj;
+                    case REF_WORLD:
+                        return globContext->worldToCam;
+                    default:
+                        throw std::runtime_error( "map_query_shadecontext::MatrixTo() - Unknown RefFrame" );
+                    }
+
+                    return Matrix3();
+                }
+
+                Matrix3 MatrixFrom( RefFrame ifrom ) {
+                    int nodeID;
+
+                    switch( ifrom ) {
+                    case REF_OBJECT:
+                        return ( globContext && ( nodeID = NodeID() ) >= 0 )
+                                   ? globContext->GetRenderInstance( nodeID )->objToCam
+                                   : Matrix3();
+                    case REF_WORLD:
+                        return ( globContext ) ? globContext->worldToCam : Matrix3();
+                    case REF_CAMERA:
+                    default:
+                        return Matrix3();
+                    }
+                }
+
+
+
                 void GetBGColor( Color& bgcol, Color& transp, BOOL /*fogBG*/ ) {
                     bgcol.Black();
                     transp.White();
@@ -1070,6 +1105,41 @@ class raytrace_reflection_functor {
                         return p;
                     }
                 }
+
+                // 2024 Ben Lipman 9/21/2023
+                Matrix3 MatrixTo( RefFrame ito ) {
+
+                    switch( ito ) {
+                    case REF_CAMERA:
+                        return Matrix3();
+                    case REF_OBJECT:
+                        return toObject;
+                    case REF_WORLD:
+                        return globContext->camToWorld;
+                    default:
+                        throw std::runtime_error( "map_query_shadecontext::MatrixTo() - Unknown RefFrame" );
+                    }
+
+                    return Matrix3();
+                }
+
+                Matrix3 MatrixFrom( RefFrame ifrom ) {
+                    int nodeID;
+
+                    switch( ifrom ) {
+                    case REF_OBJECT:
+                        return ( globContext && ( nodeID = NodeID() ) >= 0 )
+                                   ? globContext->GetRenderInstance( nodeID )->objToCam
+                                   : Matrix3();
+                    case REF_WORLD:
+                        return ( globContext ) ? globContext->worldToCam : Matrix3();
+                    case REF_CAMERA:
+                    default:
+                        return Matrix3();
+                    }
+                }
+
+
                 void GetBGColor( Color& bgcol, Color& transp, BOOL /*fogBG*/ ) {
                     bgcol.Black();
                     transp.White();

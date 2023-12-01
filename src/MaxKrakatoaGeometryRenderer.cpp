@@ -398,6 +398,9 @@ class MatteOpacityShadeContext : public ShadeContext {
     virtual Point3 PointFrom( const Point3& p, RefFrame /*ifrom*/ ) { return p; }
     virtual Point3 VectorTo( const Point3& p, RefFrame /*ito*/ ) { return p; }
     virtual Point3 VectorFrom( const Point3& p, RefFrame /*ifrom*/ ) { return p; }
+
+    virtual Matrix3 MatrixTo( RefFrame ito ) { return Matrix3(); }
+    virtual Matrix3 MatrixFrom( RefFrame ifrom ) { return Matrix3(); }
 };
 
 Point3 MatteOpacityShadeContext::UVW( int channel ) { return uvwArray[channel]; }

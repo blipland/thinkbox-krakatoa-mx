@@ -135,13 +135,13 @@ IParamBlock2* MaxKrakatoaReferenceTarget<BaseClass, ChildClass>::GetParamBlockBy
 
 template <class BaseClass, class ChildClass>
 void MaxKrakatoaReferenceTarget<BaseClass, ChildClass>::BeginEditParams( IObjParam* ip, ULONG flags,
-                                                                         Animatable* prev = NULL ) {
+                                                                         Animatable* prev) {
     GetClassDesc()->BeginEditParams( ip, this, flags, prev );
 }
 
 template <class BaseClass, class ChildClass>
 void MaxKrakatoaReferenceTarget<BaseClass, ChildClass>::EndEditParams( IObjParam* ip, ULONG flags,
-                                                                       Animatable* next = NULL ) {
+                                                                       Animatable* next) {
     GetClassDesc()->EndEditParams( ip, this, flags, next );
 }
 

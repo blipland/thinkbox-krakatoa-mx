@@ -8,7 +8,7 @@ find_package( thinkboxcmlibrary REQUIRED )
 include( PrecompiledHeader )
 include( ThinkboxCMLibrary )
 
-set( SUPPORTED_MAX_VERSIONS 2022 2023 2024)
+set( SUPPORTED_MAX_VERSIONS 2022 2023 2024 2025)
 
 option( MAX_VERSION "The version of the 3ds Max SDK to build the library against." 2022 )
 

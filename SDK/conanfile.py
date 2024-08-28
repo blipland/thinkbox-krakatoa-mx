@@ -7,13 +7,14 @@ from conans import ConanFile, CMake
 
 VALID_MAX_CONFIGS: dict[tuple[str, str], set[str]] = {
     ('Visual Studio', '15'): { '2022' },
-    ('Visual Studio', '16'): { '2023', '2024' }
+    ('Visual Studio', '16'): { '2023', '2024' },
+    ('Visual Studio', '17'): { '2025' },
 }
 
 SETTINGS: dict[str, Any] = {
     'os': ['Windows'],
     'compiler': {
-        'Visual Studio': {'version': ['15', '16']},
+        'Visual Studio': {'version': ['15', '16', '17']},
     },
     'build_type': None,
     'arch': 'x86_64'
@@ -40,7 +41,7 @@ class KrakatoaMXConan(ConanFile):
     tool_requires: list[str] = TOOL_REQUIRES
     generators: str | list[str] = 'cmake_find_package'
     options: dict[str, Any] = {
-        'max_version': ['2022', '2023','2024']
+        'max_version': ['2022', '2023','2024','2025']
     }
 
     def configure(self) -> None:

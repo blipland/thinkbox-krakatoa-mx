@@ -209,7 +209,7 @@ void MaxKrakatoaChannelTexmapOperator::compile( const std::vector<channel_op_nod
     frantic::max3d::shaders::collect_map_requirements( m_pMap, m_reqUVWs );
 
     if( frantic::logging::is_logging_debug() ) {
-        frantic::logging::debug << _T("For map: \"") << m_pMap->GetName() << _T("\"") << std::endl;
+        frantic::logging::debug << _T("For map: \"") << m_pMap->GetName().ToMCHAR() << _T("\"") << std::endl;
         for( int i = 0; i < MAX_MESHMAPS; ++i ) {
             if( m_reqUVWs[i] )
                 frantic::logging::debug << _T("\tRequires map channel: ") + boost::lexical_cast<M_STD_STRING>( i )

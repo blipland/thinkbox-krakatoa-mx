@@ -232,7 +232,7 @@ class input_script_factory : public parser_interface {
         } else if( is_int( pScriptResult ) ) {
             int theVal = pScriptResult->to_int();
             outExpr.push_back( new frantic::channels::input_value_op_node<int, 1>( node.id, &theVal ) );
-        } else if( is_number( pScriptResult ) ) {
+        } else if( Number::is_number( pScriptResult ) ) {
             float theVal = pScriptResult->to_float();
             outExpr.push_back( new frantic::channels::input_value_op_node<float, 1>( node.id, &theVal ) );
         } else

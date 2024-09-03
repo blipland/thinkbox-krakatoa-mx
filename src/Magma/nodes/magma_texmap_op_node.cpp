@@ -195,7 +195,8 @@ void magma_texmap_op_node::compile_as_extension_type( frantic::magma::magma_comp
             }
         }
 
-        sc->compile_expression( static_cast<std::unique_ptr<base_compiler::expression>>( expr ), this->get_id(), inputs,
+        sc->compile_expression( static_cast<std::unique_ptr<base_compiler::expression>>( expr.get() ), this->get_id(),
+                                inputs,
                                 inputTypes );
     } else {
         magma_node_base::compile_as_extension_type( compiler );

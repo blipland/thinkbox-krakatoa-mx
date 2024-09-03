@@ -484,7 +484,7 @@ RefResult MaxKrakatoaPRTLoader::NotifyRefChanged( const Interval& /*changeInt*/,
 
 //             MaxKrakatoaNodeMonitor* pMonitor =
 //                 static_cast<MaxKrakatoaNodeMonitor*>( m_refBlock->GetReferenceTarget( kNodeRefs, 0, index ) );
-// 
+//
 //             // We can get messages from an invalid index during undo, so make sure it is a valid ptr.
 //             if( pMonitor ) {
 //                 if( message == REFMSG_KRAKATOA_CHANGE ||
@@ -497,7 +497,7 @@ RefResult MaxKrakatoaPRTLoader::NotifyRefChanged( const Interval& /*changeInt*/,
 //                 } else if( message == REFMSG_NODEMONITOR_TARGET_DELETED ) {
 //                     INode* pNode = pMonitor->GetNode();
 //                     DeleteWSCache( pNode );
-// 
+//
 //                     m_refBlock->SetValue( kNodeRefs, 0, (ReferenceTarget*)NULL, index );
 //                     return REF_AUTO_DELETE;
 //                 }
@@ -1659,10 +1659,10 @@ void MaxKrakatoaPRTLoader::WSStateInvalidate() {
             std::vector<frantic::max3d::particles::modifier_info_t> theMods;
             frantic::max3d::collect_node_modifiers( currentNode, theMods );
 
-            std::vector<frantic::max3d::particles::modifier_info_t>::iterator it = theMods.begin();
+            auto it = theMods.begin();
             bool doGPUUpdate = false;
             for( it; it != theMods.end(); ++it ) {
-                frantic::tstring name = it->first->GetName();
+                frantic::tstring name = it->first->GetName(false).ToMCHAR();
                 if( name.find( _T( "Magma" ) ) != frantic::tstring::npos ) {
                     doGPUUpdate = true;
                     break;

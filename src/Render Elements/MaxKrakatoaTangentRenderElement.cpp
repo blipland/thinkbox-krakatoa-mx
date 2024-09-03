@@ -94,7 +94,7 @@ krakatoa::render_element_interface*
 MaxKrakatoaTangentRenderElement::get_render_element( krakatoa::scene_context_ptr pSceneContext ) {
     bool doAntialias = m_pblock->GetInt( kDoFilter ) != FALSE;
 
-    std::auto_ptr<krakatoa::tangent_render_element> pElement(
+    std::unique_ptr<krakatoa::tangent_render_element> pElement(
         new krakatoa::tangent_render_element( pSceneContext, doAntialias ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaTangentRenderElement::write_back, this, _1 ) );

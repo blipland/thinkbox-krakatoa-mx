@@ -116,7 +116,7 @@ MaxKrakatoaZDepthRenderElement::get_render_element( krakatoa::scene_context_ptr 
     float minDepth = m_pblock->GetFloat( kDepthMin );
     float maxDepth = m_pblock->GetFloat( kDepthMax );
 
-    std::auto_ptr<krakatoa::zdepth_render_element> pElement(
+    std::unique_ptr<krakatoa::zdepth_render_element> pElement(
         new krakatoa::zdepth_render_element( pSceneContext, doAntialias, doDepthRange, minDepth, maxDepth ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaZDepthRenderElement::write_back, this, _1 ) );

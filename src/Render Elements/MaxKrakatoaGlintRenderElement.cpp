@@ -86,7 +86,7 @@ void MaxKrakatoaGlintRenderElement::DefineParamBlock( ParamBlockDesc2* pParamDes
 }
 
 krakatoa::render_element_interface* MaxKrakatoaGlintRenderElement::get_render_element( krakatoa::scene_context_ptr ) {
-    std::auto_ptr<krakatoa::shader_render_element> pElement( new krakatoa::shader_render_element( _T("Specular3") ) );
+    std::unique_ptr<krakatoa::shader_render_element> pElement( new krakatoa::shader_render_element( _T("Specular3") ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaGlintRenderElement::write_back, this, _1 ) );
 

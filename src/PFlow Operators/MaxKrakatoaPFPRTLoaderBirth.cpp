@@ -334,7 +334,7 @@ IOResult MyState::Load( ILoad* iload ) {
 IObject* KrakatoaPFPRTLoaderBirth::GetCurrentState( IObject* pContainer ) {
     std::map<IObject*, IObject*>::const_iterator it = m_stateMap.find( pContainer );
 
-    std::auto_ptr<MyState> newState( new MyState );
+    std::unique_ptr<MyState> newState( new MyState );
 
     if( it != m_stateMap.end() )
         newState->CopyFrom( *static_cast<MyState*>( it->second ) );
@@ -351,7 +351,7 @@ void KrakatoaPFPRTLoaderBirth::SetCurrentState( IObject* actionState, IObject* p
         if( pState->GetClassID() == MYSTATE_ID ) {
             std::map<IObject*, IObject*>::iterator it = m_stateMap.lower_bound( pContainer );
             if( it == m_stateMap.end() || it->first != pContainer ) {
-                std::auto_ptr<MyState> newState( new MyState );
+                std::unique_ptr<MyState> newState( new MyState );
 
                 it = m_stateMap.insert( it, std::pair<IObject*, IObject*>( pContainer, newState.get() ) );
 
@@ -544,7 +544,7 @@ bool KrakatoaPFPRTLoaderBirth::Proceed( IObject* pCont,
         // MyState* pState = static_cast<MyState*>( this->GetCurrentState( pCont ) );
         std::map<IObject*, IObject*>::iterator it = m_stateMap.lower_bound( pCont );
         if( it == m_stateMap.end() || it->first != pCont ) {
-            std::auto_ptr<MyState> newState( new MyState );
+            std::unique_ptr<MyState> newState( new MyState );
 
             it = m_stateMap.insert( it, std::pair<IObject*, IObject*>( pCont, newState.get() ) );
 

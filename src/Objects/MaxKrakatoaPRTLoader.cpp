@@ -1765,7 +1765,7 @@ void MaxKrakatoaPRTLoader::GenerateParticlesRenderItem( TimeValue& t, Box3& boun
         FF_LOG( error ) << shaderPath.c_str() << " doesn't exist. Please re-install KrakatoaMX.";
     }
 
-    std::auto_ptr<frantic::max3d::viewport::ParticleRenderItem<>> newRenderItem(
+    std::unique_ptr<frantic::max3d::viewport::ParticleRenderItem<>> newRenderItem(
         new frantic::max3d::viewport::ParticleRenderItem<>( shaderPath.c_str() ) );
 
     frantic::particles::particle_array pc = m_cachedWorldParticles[nodeContext.GetRenderNode().GetMaxNode()].particles;
@@ -1826,10 +1826,10 @@ void MaxKrakatoaPRTLoader::GenerateIconRenderItem( TimeValue& t ) {
     MaxSDK::Graphics::MaxWorldMatrixToMatrix44( iconTM, m_viewportData.m_iconTM );
 
 #if MAX_VERSION_MAJOR >= 25
-    std::auto_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
+    std::unique_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
         new frantic::max3d::viewport::DecoratedMeshEdgeRenderItem( GetPRTLoaderIconMeshShared(), false, iconTM ) );
 #else
-    std::auto_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
+    std::unique_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
         new frantic::max3d::viewport::DecoratedMeshEdgeRenderItem( GetPRTLoaderIconMesh(), false, false, iconTM ) );
 #endif
 
@@ -1839,7 +1839,7 @@ void MaxKrakatoaPRTLoader::GenerateIconRenderItem( TimeValue& t ) {
 }
 
 void MaxKrakatoaPRTLoader::GenerateBoundingBoxRenderItem( TimeValue& /*t*/, Box3& boundingBox ) {
-    std::auto_ptr<frantic::max3d::viewport::BoxRenderItem> boundsImpl( new frantic::max3d::viewport::BoxRenderItem );
+    std::unique_ptr<frantic::max3d::viewport::BoxRenderItem> boundsImpl( new frantic::max3d::viewport::BoxRenderItem );
 
     boundsImpl->Initialize( boundingBox );
 

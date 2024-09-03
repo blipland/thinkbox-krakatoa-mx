@@ -91,7 +91,7 @@ void MaxKrakatoaOccludedLayerRenderElement::DefineParamBlock( ParamBlockDesc2* p
 
 krakatoa::render_element_interface*
 MaxKrakatoaOccludedLayerRenderElement::get_render_element( krakatoa::scene_context_ptr ) {
-    std::auto_ptr<krakatoa::occluded_layer_render_element> pElement( new krakatoa::occluded_layer_render_element );
+    std::unique_ptr<krakatoa::occluded_layer_render_element> pElement( new krakatoa::occluded_layer_render_element );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaOccludedLayerRenderElement::write_back, this, _1 ) );
 

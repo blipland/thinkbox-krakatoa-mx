@@ -114,7 +114,7 @@ krakatoa::render_element_interface* MaxKrakatoaLightRenderElement::get_render_el
     frantic::tstring internalName =
         lightName + _T("_") + boost::lexical_cast<frantic::tstring>( pLightNode->GetHandle() );
 
-    std::auto_ptr<krakatoa::light_render_element> pElement(
+    std::unique_ptr<krakatoa::light_render_element> pElement(
         new krakatoa::light_render_element( lightName, internalName ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaLightRenderElement::write_back, this, _1 ) );

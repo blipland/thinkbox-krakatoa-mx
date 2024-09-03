@@ -127,7 +127,7 @@ class KrakatoaSkinWrap : public WSModifier {
     Interval m_valid;
 
     frantic::geometry::trimesh3 m_baseMesh;
-    std::auto_ptr<frantic::geometry::trimesh3_kdtree> m_baseTree;
+    std::unique_ptr<frantic::geometry::trimesh3_kdtree> m_baseTree;
 
     // So this part gets a little weird ... Krakatoa typically will evaluate a modifier
     // at time T then at time T+(deltaT) in order to calculate the velocity caused by

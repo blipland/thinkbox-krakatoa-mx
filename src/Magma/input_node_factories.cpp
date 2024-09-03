@@ -252,7 +252,7 @@ class input_geometry_factory : public parser_interface {
 
         geometry_provider& geoProvider = parser.get_geometry_provider();
 
-        std::auto_ptr<frantic::channels::geometry_input_node> pResult(
+        std::unique_ptr<frantic::channels::geometry_input_node> pResult(
             new frantic::channels::geometry_input_node( node.id ) );
 
         Array* pGeomsList = static_cast<Array*>( pGeomsListVal );

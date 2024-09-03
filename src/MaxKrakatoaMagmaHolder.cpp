@@ -170,7 +170,7 @@ Value* MaxKrakatoaMagmaHolder::compile_and_execute( Value* values, index_type in
         // TODO: Use the active viewport I suppose ...
         frantic::graphics::camera<float> defaultCam;
 
-        // std::auto_ptr<IMaxKrakatoaPRTObject::IEvalContext> context( IMaxKrakatoaPRTObject::CreateDefaultEvalContext(
+        // std::unique_ptr<IMaxKrakatoaPRTObject::IEvalContext> context( IMaxKrakatoaPRTObject::CreateDefaultEvalContext(
         // inProps.get_channel_map(), defaultCam, t ) );
 
         frantic::max3d::particles::IMaxKrakatoaPRTEvalContextPtr context =

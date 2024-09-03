@@ -106,7 +106,7 @@ MaxKrakatoaVelocityRenderElement::get_render_element( krakatoa::scene_context_pt
     float maxVelocity = m_pblock->GetFloat( kMaxVelocity );
     float frameRate = (float)GetFrameRate();
 
-    std::auto_ptr<krakatoa::velocity_render_element> pElement(
+    std::unique_ptr<krakatoa::velocity_render_element> pElement(
         new krakatoa::velocity_render_element( pSceneContext, doAntialias, frameRate, doVelocityMax, maxVelocity ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaVelocityRenderElement::write_back, this, _1 ) );

@@ -156,7 +156,7 @@ MaxKrakatoaMagma2RenderElement::get_render_element( krakatoa::scene_context_ptr 
 
     boost::shared_ptr<frantic::magma::magma_interface> magmaInterface = GetMagmaInterface( pMagmaHolder );
 
-    std::auto_ptr<magma_render_element> pElement(
+    std::unique_ptr<magma_render_element> pElement(
         new magma_render_element( doAntialias, pSceneContext, magmaInterface ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaMagma2RenderElement::write_back, this, _1 ) );
@@ -265,7 +265,7 @@ magma_render_element::draw_type magma_render_element::get_drawing_type() const {
 }
 
 krakatoa::render_element_interface* magma_render_element::clone() {
-    std::auto_ptr<magma_render_element> pResult( new magma_render_element );
+    std::unique_ptr<magma_render_element> pResult( new magma_render_element );
 
     pResult->m_magmaInterface = m_magmaInterface;
     pResult->m_compiler.set_abstract_syntax_tree( m_magmaInterface );

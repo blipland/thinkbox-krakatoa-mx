@@ -81,7 +81,7 @@ void magma_texmap_op_node::compile_as_extension_type( frantic::magma::magma_comp
 
     if( frantic::magma::simple_compiler::simple_particle_compiler* sc =
             dynamic_cast<frantic::magma::simple_compiler::simple_particle_compiler*>( &compiler ) ) {
-        std::auto_ptr<MagmaTexmapExpression> expr(
+        std::unique_ptr<MagmaTexmapExpression> expr(
             new MagmaTexmapExpression( texmap, globContext, NULL, curNode, inWorldSpace, resultType ) );
 
         std::vector<std::pair<magma_interface::magma_id, int>> inputs;
@@ -195,7 +195,7 @@ void magma_texmap_op_node::compile_as_extension_type( frantic::magma::magma_comp
             }
         }
 
-        sc->compile_expression( static_cast<std::auto_ptr<base_compiler::expression>>( expr ), this->get_id(), inputs,
+        sc->compile_expression( static_cast<std::unique_ptr<base_compiler::expression>>( expr ), this->get_id(), inputs,
                                 inputTypes );
     } else {
         magma_node_base::compile_as_extension_type( compiler );

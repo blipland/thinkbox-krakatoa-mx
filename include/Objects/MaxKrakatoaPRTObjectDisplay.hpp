@@ -112,7 +112,7 @@ class MaxKrakatoaPRTObjectDisplay : public PRTObject<CHILD> {
             FF_LOG( error ) << shaderPath.c_str() << " doesn't exist. Please re-install KrakatoaMX.";
         }
 
-        std::auto_ptr<frantic::max3d::viewport::ParticleRenderItem<CHILD::particle_t>> newRenderItem(
+        std::unique_ptr<frantic::max3d::viewport::ParticleRenderItem<CHILD::particle_t>> newRenderItem(
             new frantic::max3d::viewport::ParticleRenderItem<CHILD::particle_t>( shaderPath.c_str() ) );
 
         frantic::max3d::viewport::render_type renderType = frantic::max3d::viewport::RT_POINT_LARGE;
@@ -181,10 +181,10 @@ class MaxKrakatoaPRTObjectDisplay : public PRTObject<CHILD> {
         MaxSDK::Graphics::MaxWorldMatrixToMatrix44( iconTM, tm );
 
 #if MAX_VERSION_MAJOR >= 25
-        std::auto_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
+        std::unique_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
             new frantic::max3d::viewport::DecoratedMeshEdgeRenderItem( pIconMesh, false, iconTM ) );
 #else
-        std::auto_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
+        std::unique_ptr<MaxSDK::Graphics::Utilities::MeshEdgeRenderItem> iconImpl(
             new frantic::max3d::viewport::DecoratedMeshEdgeRenderItem( pIconMesh, false, false, iconTM ) );
 #endif
 

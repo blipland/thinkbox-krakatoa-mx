@@ -87,7 +87,7 @@ void MaxKrakatoaSpecularRenderElement::DefineParamBlock( ParamBlockDesc2* pParam
 
 krakatoa::render_element_interface*
 MaxKrakatoaSpecularRenderElement::get_render_element( krakatoa::scene_context_ptr ) {
-    std::auto_ptr<krakatoa::specular_render_element> pElement( new krakatoa::specular_render_element );
+    std::unique_ptr<krakatoa::specular_render_element> pElement( new krakatoa::specular_render_element );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaSpecularRenderElement::write_back, this, _1 ) );
 

@@ -377,7 +377,7 @@ IObject* IMagmaModifierImpl<ModifierType, Impl>::EvaluateDebug( INode* node, int
         pin.reset();
     }
 
-    std::auto_ptr<DebugInformation> result;
+    std::unique_ptr<DebugInformation> result;
     if( pin ) {
         ReferenceTarget* magmaHolder = m_pblock->GetReferenceTarget( kMagmaHolderRef );
 

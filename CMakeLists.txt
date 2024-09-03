@@ -18,7 +18,7 @@ endif()
 
 add_library( krakatoamx SHARED )
 
-set_property( TARGET krakatoamx PROPERTY CXX_STANDARD 14 )
+set_property( TARGET krakatoamx PROPERTY CXX_STANDARD 17 )
 
 set_target_properties( krakatoamx PROPERTIES OUTPUT_NAME "MaxKrakatoa" )
 set_target_properties( krakatoamx PROPERTIES PREFIX "" )

@@ -86,7 +86,7 @@ void MaxKrakatoaDiffuseRenderElement::DefineParamBlock( ParamBlockDesc2* pParamD
 }
 
 krakatoa::render_element_interface* MaxKrakatoaDiffuseRenderElement::get_render_element( krakatoa::scene_context_ptr ) {
-    std::auto_ptr<krakatoa::diffuse_render_element> pElement( new krakatoa::diffuse_render_element );
+    std::unique_ptr<krakatoa::diffuse_render_element> pElement( new krakatoa::diffuse_render_element );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaDiffuseRenderElement::write_back, this, _1 ) );
 

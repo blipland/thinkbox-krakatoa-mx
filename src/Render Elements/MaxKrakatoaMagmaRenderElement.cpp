@@ -110,7 +110,7 @@ MaxKrakatoaMagmaRenderElement::get_render_element( krakatoa::scene_context_ptr p
     std::vector<frantic::channels::channel_op_node*> exprTree;
     create_kcm_ast_nodes( exprTree, pSceneContext, NULL, pMagmaHolder );
 
-    std::auto_ptr<krakatoa::magma_render_element> pElement(
+    std::unique_ptr<krakatoa::magma_render_element> pElement(
         new krakatoa::magma_render_element( doAntialias, exprTree ) );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaMagmaRenderElement::write_back, this, _1 ) );

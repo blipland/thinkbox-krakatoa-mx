@@ -93,7 +93,7 @@ void MaxKrakatoaEmissionRenderElement::DefineParamBlock( ParamBlockDesc2* pParam
 
 krakatoa::render_element_interface*
 MaxKrakatoaEmissionRenderElement::get_render_element( krakatoa::scene_context_ptr ) {
-    std::auto_ptr<krakatoa::emission_render_element> pElement( new krakatoa::emission_render_element );
+    std::unique_ptr<krakatoa::emission_render_element> pElement( new krakatoa::emission_render_element );
 
     pElement->register_commit_callback( boost::bind( &MaxKrakatoaEmissionRenderElement::write_back, this, _1 ) );
 
